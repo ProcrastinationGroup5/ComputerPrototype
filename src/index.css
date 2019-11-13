@@ -1,0 +1,78 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.NavBarTypography {
+  font-size: 2em;
+  text-decoration: none;
+  margin-left: -5px;
+  margin-right: 10px;
+}
+
+.AddTaskButton {
+  font-size: 2vw;
+  padding-left: 0.5vw;
+}
+
+.addTaskInputName {
+  width:100%;
+  font-size:4vw
+}
+
+.addTaskInputNameLabel {
+  width:100%;
+  font-size:5vw;
+  text-align: center;
+}
+
+.addTaskInputDate {
+  width:100%;
+  font-size:3vw
+}
+
+.addTaskInputDateLabel {
+  width:100%;
+  font-size:5vw
+}
+
+.addTaskInputDifficulty {
+  width:100%;
+  font-size:3vw
+}
+
+.addTaskInputDifficultyLabel {
+  width:100%;
+  font-size: 5vw;
+}
+
+.addInputSubtask {
+  width:100%;
+  font-size:2.5vw
+}
+
+.AddTaskButton {
+  margin-left:10px;
+}
+
+.visualisationCircle{
+  margin-left:40px;
+}
+
+.taskFormInput {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.taskDetailsInfo {
+  text-align: center;
+}
