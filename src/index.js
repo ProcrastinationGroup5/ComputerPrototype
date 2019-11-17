@@ -11,14 +11,16 @@ import {
   editTasks,
   displayANTBool,
   displayTaskInfoBool,
-  setTaskSelected
+  setTaskSelected,
+  displayCalBool
 } from './reducers';
 
 const rootReducer = combineReducers({
   editTasks,
   displayANTBool,
   displayTaskInfoBool,
-  setTaskSelected
+  setTaskSelected,
+  displayCalBool
 })
 
 const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());

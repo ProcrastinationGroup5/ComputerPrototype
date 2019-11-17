@@ -5,7 +5,8 @@ import {
     SET_TASK_SELECTED,
     ADD_NEW_SUBTASK,
     COMPLETE_SUBTASK,
-    COMPLETE_TASK
+    COMPLETE_TASK,
+    DISPLAY_CAL_BOOL_FLIP
 } from './constants';
 
 import { tasks } from './Data/tasks'
@@ -30,6 +31,8 @@ export const editTasks = (state = initialStateTasks, action = {}) => {
             return update(state, {
                 tasksVar: {
                     [action.payload.index]: {
+                        numberSubtasks:{
+                            $set: state.tasksVar[action.payload.index].numberSubtasks+1},
                         subtasks: { $set: [...state.tasksVar[action.payload.index].subtasks, ...action.payload.items] }
                     }
                 }
@@ -38,6 +41,8 @@ export const editTasks = (state = initialStateTasks, action = {}) => {
             return update(state, {
                 tasksVar: {
                     [action.payload.index]: {
+                        numberSubtasks:{
+                            $set: state.tasksVar[action.payload.index].numberSubtasks-1},
                         subtasks: {
                             $set:
                                 [...state.tasksVar[action.payload.index].subtasks.filter(function (info) {
@@ -87,6 +92,21 @@ export const displayTaskInfoBool = (state = initialStateTaskInfoBool, action = {
     switch (action.type) {
         case DISPLAY_TASK_INFO_FLIP:
             return Object.assign({}, state, { displayTaskInfoBoolVar: action.payload })
+        default:
+            return state;
+    }
+}
+
+//Display Calendar Bool
+
+const initialStateDisplayCalBool = {
+    displayCalBoolVar: false
+}
+
+export const displayCalBool = (state = initialStateDisplayCalBool, action = {}) => {
+    switch (action.type) {
+        case DISPLAY_CAL_BOOL_FLIP:
+            return Object.assign({}, state, { displayCalBoolVar: action.payload })
         default:
             return state;
     }
