@@ -10,7 +10,8 @@ import {
     addNewSubtask,
     completeSubtask,
     completeTask,
-    displayANTBoolFlip
+    displayANTBoolFlip,
+    displayCalBoolFlip
 } from '../actions'
 
 const mapStateToProps = state => {
@@ -28,6 +29,7 @@ const mapDispatchToProps = (dispatch) => {
         completeSubtask: (array) => dispatch(completeSubtask(array)),
         completeTask: (str) => dispatch(completeTask(str)),
         displayANTBoolFlip: (bool) => dispatch(displayANTBoolFlip(bool)),
+        displayCalBoolFlip: (bool) => dispatch(displayCalBoolFlip(bool))
     }
 }
 
@@ -103,14 +105,19 @@ class TaskDetails extends Component {
             index: this.props.selectedTask,
             item: this.props.tasks[this.props.selectedTask].subtasks[this.state.selectedTaskDetailRow]
         })
+        this.setState({
+            selectedTaskDetailRow: ''
+        })
     }
 
     renderCompleteButton = () => {
         if (this.state.selectedTaskDetailRow !== '') {
             return (
-                <div><Button size='small' onClick={() => { this.handleComplete() }}>
-                    Completed
-            </Button></div>
+                <div>
+                    <Button size='small' onClick={() => { this.handleComplete() }}>
+                        Completed
+                    </Button>
+                </div>
             )
         }
     }
@@ -121,6 +128,7 @@ class TaskDetails extends Component {
         )
         this.props.displayTaskInfoFlip(false)
         this.props.displayANTBoolFlip(false)
+        this.props.displayCalBoolFlip(false)
 
     }
 

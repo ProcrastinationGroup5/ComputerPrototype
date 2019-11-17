@@ -21,12 +21,12 @@ const mapDispatchToProps = (dispatch) => {
 
 function isValidDate(dateString) {
     var regEx = /^\d{4}-\d{2}-\d{2}$/;
-    if(!dateString.match(regEx)) return false;  // Invalid format
+    if (!dateString.match(regEx)) return false;  // Invalid format
     var d = new Date(dateString);
     var dNum = d.getTime();
-    if(!dNum && dNum !== 0) return false; // NaN value, Invalid date
-    return d.toISOString().slice(0,10) === dateString;
-  }
+    if (!dNum && dNum !== 0) return false; // NaN value, Invalid date
+    return d.toISOString().slice(0, 10) === dateString;
+}
 
 class AddTask extends Component {
 
@@ -83,7 +83,7 @@ class AddTask extends Component {
             window.alert('Please select difficulty')
         }
 
-        if (!(isValidDate(this.state.formControls.date.value))){
+        if (!(isValidDate(this.state.formControls.date.value))) {
             window.alert('Please input a valid date')
         }
 
@@ -107,7 +107,8 @@ class AddTask extends Component {
                 name: this.state.formControls.name.value,
                 date: this.state.formControls.date.value,
                 difficulty: this.state.formControls.difficulty.value,
-                subtasks: this.state.subtasks
+                subtasks: this.state.subtasks,
+                numberSubtasks: this.state.numberSubtasks
             })
 
             this.props.displayANTBoolFlip(false)
@@ -119,16 +120,16 @@ class AddTask extends Component {
         const subTaskInputs = [];
 
         for (let i = 0; i < this.state.numberSubtasks; i++) {
-            subTaskInputs.push(<input type="text"
+            subTaskInputs.push(<div className='taskFormInput'><input type="text"
                 className='addInputSubtask'
                 onChange={(event) => this.handleSubtaskChange(i, event)}
-            />)
+            /><br /></div>)
         }
 
         return (
             <form>
                 <div className='taskFormInput'>
-                    <label className='addTaskInputNameLabel'>Task Name</label>
+                    <label className='addTaskInputNameLabel'>Task Name</label><br />
                     <input type="text"
                         name="name"
                         className='addTaskInputName'
@@ -138,7 +139,7 @@ class AddTask extends Component {
                 </div>
 
                 <div className='taskFormInput'>
-                    <label className='addTaskInputDateLabel'>Due Date</label>
+                    <label className='addTaskInputDateLabel'>Due Date</label><br />
                     <input type="date"
                         name="date"
                         className='addTaskInputDate'
@@ -148,7 +149,7 @@ class AddTask extends Component {
                 </div>
 
                 <div className='taskFormInput'>
-                    <label className='addTaskInputDifficultyLabel'>Difficulty</label>
+                    <label className='addTaskInputDifficultyLabel'>Difficulty</label><br />
                     <select name="difficulty"
                         value={this.state.formControls.difficulty.value}
                         className='addTaskInputDifficulty'
@@ -164,17 +165,21 @@ class AddTask extends Component {
                     {subTaskInputs}
                 </div>
 
-                <Button size='small' onClick={() => {
-                    this.setState({
-                        numberSubtasks: this.state.numberSubtasks + 1
-                    })
-                }}>
-                    Add SubTask
+                <div className='taskFormActionButtons'>
+                    <Button size='small' onClick={() => {
+                        this.setState({
+                            numberSubtasks: this.state.numberSubtasks + 1
+                        })
+                    }}>
+                        Add SubTask
                 </Button>
+                </div>
 
-                <Button size='small' onClick={() => { this.handleSubmit() }}>
-                    Submit
+                <div className='taskFormActionButtons'>
+                    <Button size='small' onClick={() => { this.handleSubmit() }}>
+                        Submit
                 </Button>
+                </div>
 
             </form>
         );
