@@ -144,7 +144,7 @@ class TaskDetails extends Component {
         }
 
         return (
-            <div>
+            <div className='taskDetailsTable'>
                 <div className='taskDetailsInfo'>
                     <h1>{this.props.tasks[this.props.selectedTask].name}</h1>
                     <h2>Due Date: {this.props.tasks[this.props.selectedTask].date}</h2>
