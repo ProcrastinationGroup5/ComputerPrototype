@@ -16,6 +16,7 @@ import {
 const mapStateToProps = state => {
     return {
       displayANTBool: state.displayANTBool.displayANTBoolVar,
+      displayCalBool: state.displayCalBool.displayCalBoolVar
     }
 }
 
@@ -27,30 +28,30 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-class AddTaskButton extends Component {
+class ViewCalButton extends Component {
     constructor(props) {
         super(props);
         this.state = {
         };
     }
 
-    toggleANTBool = () => {
+    toggleCalBool = () => {
       this.props.displayTaskInfoFlip(false)
-      this.props.displayCalBoolFlip(false)
-      if (this.props.displayANTBool === false){
-        this.props.displayANTBoolFlip(true)
+      this.props.displayANTBoolFlip(false)
+      if (this.props.displayCalBool === false){
+        this.props.displayCalBoolFlip(true)
       }
       else {
-        this.props.displayANTBoolFlip(false)
+        this.props.displayCalBoolFlip(false)
       }
     }
     render() {
         return (
             <div className="App">
-                <Button className='AddTaskButton' onClick={() => {this.toggleANTBool()}}>Add Task</Button>
+                <Button className='AddTaskButton' onClick={() => {this.toggleCalBool()}}>View Calendar</Button>
             </div>
         );
     }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(AddTaskButton)
+export default connect(mapStateToProps,mapDispatchToProps)(ViewCalButton)

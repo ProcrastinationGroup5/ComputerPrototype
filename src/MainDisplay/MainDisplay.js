@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import AddTask from '../AddTask/AddTask';
 import Visualisation from '../Visualisation/Visualisation';
-import TaskDetails from '../TaskDetails/TaskDetails'
+import TaskDetails from '../TaskDetails/TaskDetails';
+import Calendar from '../Calendar/Calendar'
 
 const mapStateToProps = state => {
     return {
         displayANTBool: state.displayANTBool.displayANTBoolVar,
-        displayTaskInfoBool: state.displayTaskInfoBool.displayTaskInfoBoolVar
+        displayTaskInfoBool: state.displayTaskInfoBool.displayTaskInfoBoolVar,
+        displayCalBool: state.displayCalBool.displayCalBoolVar
     }
 }
 
@@ -25,6 +27,13 @@ class MainDisplay extends Component {
             return (
                 <div>
                     <TaskDetails/>
+                </div>
+            )
+        }
+        else if (this.props.displayCalBool === true){
+            return (
+                <div>
+                    <Calendar/>
                 </div>
             )
         }

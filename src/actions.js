@@ -5,7 +5,8 @@ import {
     SET_TASK_SELECTED,
     ADD_NEW_SUBTASK,
     COMPLETE_SUBTASK,
-    COMPLETE_TASK
+    COMPLETE_TASK,
+    DISPLAY_CAL_BOOL_FLIP
 } from './constants';
 
 export const addNewTask = (form) => ({
@@ -41,4 +42,9 @@ export const completeSubtask = (array) => ({
 export const completeTask = (str) => ({
     type: COMPLETE_TASK,
     payload: str
+})
+
+export const displayCalBoolFlip = (bool) => ({
+    type: DISPLAY_CAL_BOOL_FLIP,
+    payload: bool
 })
