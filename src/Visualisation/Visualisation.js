@@ -58,13 +58,19 @@ class Visualisation extends Component {
 
     render() {
 
+        function getRandomArbitrary(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
         const tasksList = [];
 
         for (let i = 0; i < this.props.tasksLength; i++) {
+            let leftMargin = getRandomArbitrary(20,50)+'%'
+            console.log(leftMargin)
             tasksList.push(
-                <div className='taskVisual'>
+                <div style = {{marginLeft: leftMargin}}>
                     <Button className='taskNameButton' onClick={() => { this.taskNameClicked(i) }}>{this.props.tasks[i].name}</Button><br />
-                    <Circle r={this.props.tasks[i].numberSubtasks * 40} fill={{ color: this.circleColor(i) }} /><br />
+                    <Circle r={this.props.tasks[i].numberSubtasks * 60} fill={{ color: this.circleColor(i) }} /><br />
                 </div>
             )
         }
