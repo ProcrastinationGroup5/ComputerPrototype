@@ -49,8 +49,8 @@ class NavBar extends Component {
             <div className="App">
                 <AppBar position="static" style={{ background: '#D2A722' }}>
                     <Toolbar>
-                        <img src={require('../images/back_button.png')} className='backButton' onClick={() => this.goBack()} />
-                        <h1 className='NavBarTypography'>
+                        
+                        <h1 className='NavBarTypography'  onClick={() => this.goBack()}>
                             YOUR TASKS
                         </h1>
                         <AddTaskButton />
