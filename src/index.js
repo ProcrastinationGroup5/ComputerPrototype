@@ -3,9 +3,6 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
 import './index.css';
-import * as serviceWorker from './serviceWorker';
-import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
-import { routerReducer } from 'react-router-redux';
 import Home from './Home/Home'
 import {
   editTasks,
