@@ -16,11 +16,33 @@ code {
   background-color: rebeccapurple;
 }
 
-.backButton {
-  height: 50px;
-  margin-right: 10px;
-  margin-left: -10px;
-  cursor: pointer;
+#submit
+{
+  display:block;
+  position: relative;
+}
+
+#block{
+  display:block;
+}
+
+#datedifblock
+{
+  display:block;
+  position: relative;
+  right:100px;
+  bottom: 75px;
+  width:100%;
+}
+
+#right{
+  float:right;
+  width: 25%;
+}
+
+#left{
+  float: left;
+  width: 75%;
 }
 
 .NavBarTypography {
@@ -28,6 +50,12 @@ code {
   text-decoration: none;
   margin-left: -5px;
   margin-right: 10px;
+  cursor: pointer;
+}
+
+.NavBarTypography:hover
+{
+  color: black;
 }
 
 .AddTaskButton {
@@ -36,18 +64,23 @@ code {
 }
 
 .addTaskInputName {
-  width:50%;
-  font-size:2vw
+  position: relative;
+  bottom: 75px;
+  left: 40px;
+  width:60%;
+  font-size:200%;
 }
 
 .addTaskInputNameLabel {
+  position: relative;
+  bottom: 75px;
+  left: 40px;
   width:100%;
   font-size:4vw;
-  text-align: center;
 }
 
 .addTaskInputDate {
-  width:50%;
+  width:100%;
   font-size:2vw
 }
 
@@ -57,7 +90,7 @@ code {
 }
 
 .addTaskInputDifficulty {
-  width:50%;
+  width:100%;
   font-size:2vw
 }
 
@@ -67,8 +100,10 @@ code {
 }
 
 .addInputSubtask {
+  position:relative;
+  left: 40px;
   width:50%;
-  font-size:2.5vw
+  font-size:2.5vw;
 }
 
 .AddTaskButton {
@@ -81,7 +116,6 @@ code {
 
 .taskFormInput {
   margin-bottom: 30px;
-  text-align: center;
 }
 
 .taskForm {
@@ -89,21 +123,31 @@ code {
 }
 
 .taskDetailsInfo {
-  text-align: center;
+  text-align: left;
+  font-size: 150%;
   width:50%;
   margin-left: 25%
 }
 
 .taskDetailsTable {
-  text-align: center;
+  text-align: left;
 }
 
 .taskFormActionButtons {
-  text-align: center;
+  position: relative;
+  left: 40px;
+  text-align:left;
+}
+
+.taskFormActionButtonsSubmit
+{
+  position: relative;
+  text-align:center;
+  margin-top: 50px;
 }
 
 .taskVisual {
-  margin-left: 50%;
+  margin-left:50%;
   text-align: center;
 } 
 

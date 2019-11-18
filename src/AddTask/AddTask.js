@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import AddIcon from '@material-ui/icons/Add';
 import Button from '@material-ui/core/Button';
 import {
     addNewTask,
@@ -128,7 +129,8 @@ class AddTask extends Component {
 
         return (
             <form className = 'taskForm'>
-                <div className='taskFormInput'>
+                <div id = 'left'>
+                {/* <div className='taskFormInput'> */}
                     <label className='addTaskInputNameLabel'>Task Name</label><br />
                     <input type="text"
                         name="name"
@@ -136,9 +138,27 @@ class AddTask extends Component {
                         value={this.state.formControls.name.value}
                         onChange={this.changeHandler}
                     />
+                {/* </div> */}
+
+                <div>
+                    {subTaskInputs}
                 </div>
 
-                <div className='taskFormInput'>
+                <div className='taskFormActionButtons'>
+                    <Button variant = 'contained' startIcon={<AddIcon />} color = 'primary' size='small' onClick={() => {
+                        this.setState({
+                            numberSubtasks: this.state.numberSubtasks + 1
+                        })
+                    }}>
+                        Add SubTask
+                </Button>
+                </div>
+
+                </div>
+                
+                <div id = 'right'>
+
+                <div className='taskFormInput' id = 'datedifblock'>
                     <label className='addTaskInputDateLabel'>Due Date</label><br />
                     <input type="date"
                         name="date"
@@ -148,7 +168,7 @@ class AddTask extends Component {
                     />
                 </div>
 
-                <div className='taskFormInput'>
+                <div className='taskFormInput' id = 'datedifblock'>
                     <label className='addTaskInputDifficultyLabel'>Difficulty</label><br />
                     <select name="difficulty"
                         value={this.state.formControls.difficulty.value}
@@ -161,25 +181,19 @@ class AddTask extends Component {
                     </select>
                 </div>
 
-                <div>
-                    {subTaskInputs}
-                </div>
-
-                <div className='taskFormActionButtons'>
-                    <Button size='small' onClick={() => {
-                        this.setState({
-                            numberSubtasks: this.state.numberSubtasks + 1
-                        })
+                <div className='taskFormActionButtonsSubmit'  id = 'datedifblock'>
+                <Button variant = 'contained' color = 'primary' size='large' onClick={() => {
+                        this.handleSubmit()
                     }}>
-                        Add SubTask
-                </Button>
-                </div>
-
-                <div className='taskFormActionButtons'>
-                    <Button size='small' onClick={() => { this.handleSubmit() }}>
                         Submit
                 </Button>
                 </div>
+
+
+
+                </div>
+
+                
 
             </form>
         );
