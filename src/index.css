@@ -103,8 +103,9 @@ code {
 }
 
 .taskVisual {
-  margin-left: 50%
-}
+  margin-left: 50%;
+  text-align: center;
+} 
 
 .noTasks {
   margin-top:300px;
