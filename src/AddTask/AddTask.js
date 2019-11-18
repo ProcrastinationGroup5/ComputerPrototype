@@ -127,7 +127,7 @@ class AddTask extends Component {
         }
 
         return (
-            <form>
+            <form className = 'taskForm'>
                 <div className='taskFormInput'>
                     <label className='addTaskInputNameLabel'>Task Name</label><br />
                     <input type="text"

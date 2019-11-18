@@ -25,6 +25,12 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
+const style = {
+
+    background : '#2E3B55'
+};
+
+
 class NavBar extends Component {
     constructor(props) {
         super(props);
@@ -41,7 +47,7 @@ class NavBar extends Component {
     render() {
         return (
             <div className="App">
-                <AppBar position="static">
+                <AppBar position="static" style={{ background: '#D2A722' }}>
                     <Toolbar>
                         <img src={require('../images/back_button.png')} className='backButton' onClick={() => this.goBack()} />
                         <h1 className='NavBarTypography'>

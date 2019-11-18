@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+.navBar {
+  background-color: rebeccapurple;
+}
+
 .backButton {
   height: 50px;
   margin-right: 10px;
@@ -38,9 +42,8 @@ code {
 
 .addTaskInputNameLabel {
   width:100%;
-  font-size:5vw;
+  font-size:4vw;
   text-align: center;
-  margin-top: 30px;
 }
 
 .addTaskInputDate {
@@ -50,7 +53,7 @@ code {
 
 .addTaskInputDateLabel {
   width:100%;
-  font-size:5vw
+  font-size:4vw
 }
 
 .addTaskInputDifficulty {
@@ -60,7 +63,7 @@ code {
 
 .addTaskInputDifficultyLabel {
   width:100%;
-  font-size: 5vw;
+  font-size: 4vw;
 }
 
 .addInputSubtask {
@@ -79,6 +82,10 @@ code {
 .taskFormInput {
   margin-bottom: 30px;
   text-align: center;
+}
+
+.taskForm {
+  margin-top:100px
 }
 
 .taskDetailsInfo {
