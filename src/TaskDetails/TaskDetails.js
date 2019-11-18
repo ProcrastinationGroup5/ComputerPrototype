@@ -138,7 +138,7 @@ class TaskDetails extends Component {
 
         for (let i = 0; i < this.state.numberAdditionalSubtasks; i++) {
             subTaskInputs.push(<input type="text"
-                className='addInputSubtask'
+                className='addInputSubtaskTaskDetails'
                 onChange={(event) => this.handleAdditionalSubtaskChange(i, event)}
             />)
         }
@@ -162,25 +162,26 @@ class TaskDetails extends Component {
                             ))}
                         </TableBody>
                     </Table>
-                </div>
-                <div>
-                    {subTaskInputs}
-                </div>
-                <Button size='small' onClick={() => {
-                    this.setState({
-                        numberAdditionalSubtasks: this.state.numberAdditionalSubtasks + 1,
-                        additionalSubtaskButtonPressed: true
-                    })
-                }}>
-                    Add SubTask
+
+                    <div>
+                        {subTaskInputs}
+                    </div>
+                    <Button size='small' onClick={() => {
+                        this.setState({
+                            numberAdditionalSubtasks: this.state.numberAdditionalSubtasks + 1,
+                            additionalSubtaskButtonPressed: true
+                        })
+                    }}>
+                        Add SubTask
                 </Button>
 
-                <Button size='small' onClick={() => { this.handleSubmit() }}>
-                    Submit
+                    <Button size='small' onClick={() => { this.handleSubmit() }}>
+                        Submit
                 </Button>
 
-                {this.renderCompleteButton()}
+                    {this.renderCompleteButton()}
 
+                </div>
             </div>
 
         )
