@@ -162,3 +162,13 @@ code {
   text-align:center;
   font-size: 7vh
 }
+
+.helpParentDiv {
+  text-align: center;
+  margin-top:10%
+}
+
+.helpContentDiv {
+  margin-left: 15%;
+  margin-right: 15%;
+}

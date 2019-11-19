@@ -3,12 +3,14 @@ import { connect } from 'react-redux'
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import AddTaskButton from './AddTaskButton';
-import ViewCalButton from './ViewCalButton'
+import ViewCalButton from './ViewCalButton';
+import HelpButton from './HelpButton'
 import '../index.css'
 import {
     displayTaskInfoFlip,
     displayANTBoolFlip,
-    displayCalBoolFlip
+    displayCalBoolFlip,
+    helpBoolFlip
 } from '../actions'
 
 
@@ -22,6 +24,7 @@ const mapDispatchToProps = (dispatch) => {
         displayTaskInfoFlip: (bool) => dispatch(displayTaskInfoFlip(bool)),
         displayCalBoolFlip: (bool) => dispatch(displayCalBoolFlip(bool)),
         displayANTBoolFlip: (bool) => dispatch(displayANTBoolFlip(bool)),
+        helpBoolFlip: (bool) => dispatch(helpBoolFlip(bool))
     }
 }
 
@@ -42,19 +45,20 @@ class NavBar extends Component {
         this.props.displayTaskInfoFlip(false)
         this.props.displayANTBoolFlip(false)
         this.props.displayCalBoolFlip(false)
+        this.props.helpBoolFlip(false)
     }
 
     render() {
         return (
             <div className="App">
                 <AppBar position="static" style={{ background: '#D2A722' }}>
-                    <Toolbar>
-                        
+                    <Toolbar>           
                         <h1 className='NavBarTypography'  onClick={() => this.goBack()}>
                             YOUR TASKS
                         </h1>
                         <AddTaskButton />
                         <ViewCalButton />
+                        <HelpButton />
                     </Toolbar>
                 </AppBar>
             </div>

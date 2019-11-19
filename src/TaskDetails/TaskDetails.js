@@ -11,7 +11,8 @@ import {
     completeSubtask,
     completeTask,
     displayANTBoolFlip,
-    displayCalBoolFlip
+    displayCalBoolFlip,
+    helpBoolFlip
 } from '../actions'
 
 const mapStateToProps = state => {
@@ -29,7 +30,8 @@ const mapDispatchToProps = (dispatch) => {
         completeSubtask: (array) => dispatch(completeSubtask(array)),
         completeTask: (str) => dispatch(completeTask(str)),
         displayANTBoolFlip: (bool) => dispatch(displayANTBoolFlip(bool)),
-        displayCalBoolFlip: (bool) => dispatch(displayCalBoolFlip(bool))
+        displayCalBoolFlip: (bool) => dispatch(displayCalBoolFlip(bool)),
+        helpBoolFlip: (bool) => dispatch(helpBoolFlip(bool))
     }
 }
 
@@ -129,7 +131,7 @@ class TaskDetails extends Component {
         this.props.displayTaskInfoFlip(false)
         this.props.displayANTBoolFlip(false)
         this.props.displayCalBoolFlip(false)
-
+        this.props.helpBoolFlip(false)
     }
 
     render() {
