@@ -6,7 +6,9 @@ import {
     ADD_NEW_SUBTASK,
     COMPLETE_SUBTASK,
     COMPLETE_TASK,
-    DISPLAY_CAL_BOOL_FLIP
+    DISPLAY_CAL_BOOL_FLIP,
+    HELP_BOOL_FLIP,
+    INITIAL_HELP_BOOL
 } from './constants';
 
 export const addNewTask = (form) => ({
@@ -46,5 +48,15 @@ export const completeTask = (str) => ({
 
 export const displayCalBoolFlip = (bool) => ({
     type: DISPLAY_CAL_BOOL_FLIP,
+    payload: bool
+})
+
+export const helpBoolFlip = (bool) => ({
+    type: HELP_BOOL_FLIP,
+    payload: bool
+})
+
+export const initialHelpBoolFlip = (bool) => ({
+    type: INITIAL_HELP_BOOL,
     payload: bool
 })

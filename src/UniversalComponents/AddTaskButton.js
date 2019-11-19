@@ -10,7 +10,8 @@ import '../index.css'
 import {
   displayANTBoolFlip,
   displayTaskInfoFlip,
-  displayCalBoolFlip
+  displayCalBoolFlip,
+  helpBoolFlip
 } from '../actions'
 
 const mapStateToProps = state => {
@@ -23,7 +24,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     displayTaskInfoFlip: (bool) => dispatch(displayTaskInfoFlip(bool)),
     displayCalBoolFlip: (bool) => dispatch(displayCalBoolFlip(bool)),
-    displayANTBoolFlip: (bool) => dispatch(displayANTBoolFlip(bool))
+    displayANTBoolFlip: (bool) => dispatch(displayANTBoolFlip(bool)),
+    helpBoolFlip: (bool) => dispatch(helpBoolFlip(bool))
   }
 }
 
@@ -37,6 +39,7 @@ class AddTaskButton extends Component {
     toggleANTBool = () => {
       this.props.displayTaskInfoFlip(false)
       this.props.displayCalBoolFlip(false)
+      this.props.helpBoolFlip(false)
       if (this.props.displayANTBool === false){
         this.props.displayANTBoolFlip(true)
       }

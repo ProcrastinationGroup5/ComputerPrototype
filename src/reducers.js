@@ -6,7 +6,9 @@ import {
     ADD_NEW_SUBTASK,
     COMPLETE_SUBTASK,
     COMPLETE_TASK,
-    DISPLAY_CAL_BOOL_FLIP
+    DISPLAY_CAL_BOOL_FLIP,
+    HELP_BOOL_FLIP,
+    INITIAL_HELP_BOOL
 } from './constants';
 
 import { tasks } from './Data/tasks'
@@ -107,6 +109,24 @@ export const displayCalBool = (state = initialStateDisplayCalBool, action = {}) 
     switch (action.type) {
         case DISPLAY_CAL_BOOL_FLIP:
             return Object.assign({}, state, { displayCalBoolVar: action.payload })
+        default:
+            return state;
+    }
+}
+
+//Display Help Bool
+
+const initialStateHelpBool = {
+    helpBoolVar: false,
+    initialHelpBoolVar: true
+}
+
+export const helpBool = (state = initialStateHelpBool, action = {}) => {
+    switch (action.type) {
+        case INITIAL_HELP_BOOL:
+            return Object.assign({}, state, {initialHelpBoolVar: action.payload})
+        case HELP_BOOL_FLIP:
+            return Object.assign({}, state, {helpBoolVar: action.payload})
         default:
             return state;
     }
