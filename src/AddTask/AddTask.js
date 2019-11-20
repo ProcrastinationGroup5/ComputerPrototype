@@ -10,6 +10,7 @@ import {
 
 const mapStateToProps = state => {
     return {
+        name: state.logIn.nameVar
     }
 }
 
@@ -109,7 +110,8 @@ class AddTask extends Component {
                 date: this.state.formControls.date.value,
                 difficulty: this.state.formControls.difficulty.value,
                 subtasks: this.state.subtasks,
-                numberSubtasks: this.state.numberSubtasks
+                numberSubtasks: this.state.numberSubtasks,
+                user: this.props.name
             })
 
             this.props.displayANTBoolFlip(false)

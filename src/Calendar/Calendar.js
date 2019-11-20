@@ -10,7 +10,8 @@ import "@fullcalendar/daygrid/main.css";
 const mapStateToProps = state => {
     return {
         tasks: state.editTasks.tasksVar,
-        tasksLength: state.editTasks.tasksLength
+        tasksLength: state.editTasks.tasksLength,
+        name: state.logIn.nameVar
     }
 }
 
@@ -21,7 +22,7 @@ const mapDispatchToProps = (dispatch) => {
 
 class Calendar extends Component {
 
-    constructor(){
+    constructor() {
         super()
         this.state = {
             events: []
@@ -32,14 +33,16 @@ class Calendar extends Component {
         const events = [];
 
         for (let i = 0; i < this.props.tasksLength; i++) {
-            let dateString = this.props.tasks[i].date
-            let titleString = this.props.tasks[i].name
-            events.push(
-                { title: titleString, start: new Date(dateString), allDay:true}
-            )
+            if (this.props.tasks[i].user === this.props.name) {
+                let dateString = this.props.tasks[i].date
+                let titleString = this.props.tasks[i].name
+                events.push(
+                    { title: titleString, start: new Date(dateString), allDay: true }
+                )
+            }
         }
         return (
-            <FullCalendar events = {events} defaultView="dayGridMonth" plugins={[dayGridPlugin]}/>
+            <FullCalendar events={events} defaultView="dayGridMonth" plugins={[dayGridPlugin]} />
         )
     }
 }
