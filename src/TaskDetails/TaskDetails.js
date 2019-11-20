@@ -150,6 +150,7 @@ class TaskDetails extends Component {
                 <div className='taskDetailsInfo'>
                     <h1>{this.props.tasks[this.props.selectedTask].name}</h1>
                     <h2>Due Date: {this.props.tasks[this.props.selectedTask].date}</h2>
+                    <h2>Difficulty: {this.props.tasks[this.props.selectedTask].difficulty}</h2>
                     <Button size='small' onClick={() => { this.handleTaskComplete() }}>
                         Completed
                     </Button>
