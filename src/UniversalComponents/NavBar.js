@@ -4,7 +4,8 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import AddTaskButton from './AddTaskButton';
 import ViewCalButton from './ViewCalButton';
-import HelpButton from './HelpButton'
+import HelpButton from './HelpButton';
+import LogOut from './LogOut'
 import '../index.css'
 import {
     displayTaskInfoFlip,
@@ -59,6 +60,7 @@ class NavBar extends Component {
                         <AddTaskButton />
                         <ViewCalButton />
                         <HelpButton />
+                        <LogOut />
                     </Toolbar>
                 </AppBar>
             </div>

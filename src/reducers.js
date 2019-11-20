@@ -8,7 +8,9 @@ import {
     COMPLETE_TASK,
     DISPLAY_CAL_BOOL_FLIP,
     HELP_BOOL_FLIP,
-    INITIAL_HELP_BOOL
+    INITIAL_HELP_BOOL,
+    LOGIN_BOOL_FLIP,
+    SET_NAME
 } from './constants';
 
 import { tasks } from './Data/tasks'
@@ -33,8 +35,9 @@ export const editTasks = (state = initialStateTasks, action = {}) => {
             return update(state, {
                 tasksVar: {
                     [action.payload.index]: {
-                        numberSubtasks:{
-                            $set: state.tasksVar[action.payload.index].numberSubtasks+1},
+                        numberSubtasks: {
+                            $set: state.tasksVar[action.payload.index].numberSubtasks + 1
+                        },
                         subtasks: { $set: [...state.tasksVar[action.payload.index].subtasks, ...action.payload.items] }
                     }
                 }
@@ -43,8 +46,9 @@ export const editTasks = (state = initialStateTasks, action = {}) => {
             return update(state, {
                 tasksVar: {
                     [action.payload.index]: {
-                        numberSubtasks:{
-                            $set: state.tasksVar[action.payload.index].numberSubtasks-1},
+                        numberSubtasks: {
+                            $set: state.tasksVar[action.payload.index].numberSubtasks - 1
+                        },
                         subtasks: {
                             $set:
                                 [...state.tasksVar[action.payload.index].subtasks.filter(function (info) {
@@ -56,8 +60,9 @@ export const editTasks = (state = initialStateTasks, action = {}) => {
             });
         case COMPLETE_TASK:
             return update(state, {
-                tasksLength:{
-                    $set: state.tasksLength-1},
+                tasksLength: {
+                    $set: state.tasksLength - 1
+                },
                 tasksVar: {
                     $set:
                         [...state.tasksVar.filter(function (info) {
@@ -124,9 +129,9 @@ const initialStateHelpBool = {
 export const helpBool = (state = initialStateHelpBool, action = {}) => {
     switch (action.type) {
         case INITIAL_HELP_BOOL:
-            return Object.assign({}, state, {initialHelpBoolVar: action.payload})
+            return Object.assign({}, state, { initialHelpBoolVar: action.payload })
         case HELP_BOOL_FLIP:
-            return Object.assign({}, state, {helpBoolVar: action.payload})
+            return Object.assign({}, state, { helpBoolVar: action.payload })
         default:
             return state;
     }
@@ -142,6 +147,23 @@ export const setTaskSelected = (state = initialStateTaskSelected, action = {}) =
     switch (action.type) {
         case SET_TASK_SELECTED:
             return Object.assign({}, state, { taskSelectedVar: action.payload })
+        default:
+            return state;
+    }
+}
+
+//Log In
+const initialStateLogIn = {
+    logInVar: false,
+    nameVar: ''
+}
+
+export const logIn = (state = initialStateLogIn, action = {}) => {
+    switch (action.type) {
+        case LOGIN_BOOL_FLIP:
+            return Object.assign({}, state, { logInVar: action.payload })
+        case SET_NAME:
+            return Object.assign({}, state, { nameVar: action.payload })
         default:
             return state;
     }

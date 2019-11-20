@@ -8,7 +8,9 @@ import {
     COMPLETE_TASK,
     DISPLAY_CAL_BOOL_FLIP,
     HELP_BOOL_FLIP,
-    INITIAL_HELP_BOOL
+    INITIAL_HELP_BOOL,
+    LOGIN_BOOL_FLIP,
+    SET_NAME
 } from './constants';
 
 export const addNewTask = (form) => ({
@@ -59,4 +61,14 @@ export const helpBoolFlip = (bool) => ({
 export const initialHelpBoolFlip = (bool) => ({
     type: INITIAL_HELP_BOOL,
     payload: bool
+})
+
+export const logInBoolFlip = (bool) => ({
+    type: LOGIN_BOOL_FLIP,
+    payload: bool
+})
+
+export const setName = (name) => ({
+    type: SET_NAME,
+    payload: name
 })

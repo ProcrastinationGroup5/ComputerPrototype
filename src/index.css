@@ -172,3 +172,16 @@ code {
   margin-left: 15%;
   margin-right: 15%;
 }
+
+.logInInputs {
+  text-align: center;
+  font-size: 3vh;
+}
+
+.logInForm {
+  background-color: #D2A722;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}

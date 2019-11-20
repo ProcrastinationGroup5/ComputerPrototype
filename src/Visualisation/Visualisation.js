@@ -13,7 +13,8 @@ import NoTasks from './NoTasks'
 const mapStateToProps = state => {
     return {
         tasks: state.editTasks.tasksVar,
-        tasksLength: state.editTasks.tasksLength
+        tasksLength: state.editTasks.tasksLength,
+        name: state.logIn.nameVar
     }
 }
 
@@ -65,14 +66,15 @@ class Visualisation extends Component {
         const tasksList = [];
 
         for (let i = 0; i < this.props.tasksLength; i++) {
-            let leftMargin = getRandomArbitrary(20,50)+'%'
-            console.log(leftMargin)
-            tasksList.push(
-                <div style = {{marginLeft: leftMargin}}>
-                    <Button className='taskNameButton' onClick={() => { this.taskNameClicked(i) }}>{this.props.tasks[i].name}</Button><br />
-                    <Circle r={this.props.tasks[i].numberSubtasks * 60} fill={{ color: this.circleColor(i) }} /> <br />
-                </div>
-            )
+            if (this.props.tasks[i].user === this.props.name) {
+                let leftMargin = getRandomArbitrary(20, 50) + '%'
+                tasksList.push(
+                    <div style={{ marginLeft: leftMargin }}>
+                        <Button className='taskNameButton' onClick={() => { this.taskNameClicked(i) }}>{this.props.tasks[i].name}</Button><br />
+                        <Circle r={this.props.tasks[i].numberSubtasks * 60} fill={{ color: this.circleColor(i) }} /> <br />
+                    </div>
+                )
+            }
         }
 
         return (

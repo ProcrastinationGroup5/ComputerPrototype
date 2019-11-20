@@ -2,22 +2,50 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import NavBar from '../UniversalComponents/NavBar'
 import MainDisplay from '../MainDisplay/MainDisplay'
+import LogInScreen from './LogInScreen'
+import {
+    logInBoolFlip
+} from '../actions'
+import Button from '@material-ui/core/Button';
 
 const mapStateToProps = state => {
     return {
-        tasks: state.editTasks.tasksVar
+        tasks: state.editTasks.tasksVar,
+        logIn: state.logIn.logInVar
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        logInBoolFlip: (bool) => dispatch(logInBoolFlip(bool))
     }
 }
 
 class Home extends Component {
+
+    whatToDisplay = () => {
+        if (this.props.logIn === true) {
+            return (
+                <div>
+                    <NavBar />
+                    <MainDisplay />
+                </div>
+            )
+        } else {
+            return (
+                <div>
+                    <LogInScreen />
+                </div>
+            )
+        }
+    }
     render() {
-        return(
+        return (
             <div>
-                <NavBar/>
-                <MainDisplay/>
+                {this.whatToDisplay()}
             </div>
         )
     }
 }
 
-export default connect(mapStateToProps)(Home)
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

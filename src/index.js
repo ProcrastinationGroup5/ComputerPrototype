@@ -10,7 +10,8 @@ import {
   displayTaskInfoBool,
   setTaskSelected,
   displayCalBool,
-  helpBool
+  helpBool,
+  logIn
 } from './reducers';
 
 const rootReducer = combineReducers({
@@ -19,7 +20,8 @@ const rootReducer = combineReducers({
   displayTaskInfoBool,
   setTaskSelected,
   displayCalBool,
-  helpBool
+  helpBool,
+  logIn
 })
 
 const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
