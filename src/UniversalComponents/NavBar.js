@@ -51,7 +51,7 @@ class NavBar extends Component {
     render() {
         return (
             <div className="App">
-                <AppBar position="static" style={{ background: '#D2A722' }}>
+                <AppBar position="static" style={{ background: '#0d47a1' }}>
                     <Toolbar>           
                         <h1 className='NavBarTypography'  onClick={() => this.goBack()}>
                             YOUR TASKS

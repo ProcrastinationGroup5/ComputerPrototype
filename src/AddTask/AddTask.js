@@ -131,7 +131,7 @@ class AddTask extends Component {
             <form className = 'taskForm'>
                 <div id = 'left'>
                 {/* <div className='taskFormInput'> */}
-                    <label className='addTaskInputNameLabel'>Task Name</label><br />
+                    <label className='addTaskInputNameLabel'>Task Name:</label><br />
                     <input type="text"
                         name="name"
                         className='addTaskInputName'
@@ -157,9 +157,8 @@ class AddTask extends Component {
                 </div>
                 
                 <div id = 'right'>
-
                 <div className='taskFormInput' id = 'datedifblock'>
-                    <label className='addTaskInputDateLabel'>Due Date</label><br />
+                    <label className='addTaskInputDateLabel'>Due Date:</label><br />
                     <input type="date"
                         name="date"
                         className='addTaskInputDate'
@@ -188,7 +187,6 @@ class AddTask extends Component {
                         Submit
                 </Button>
                 </div>
-
 
 
                 </div>
