@@ -11,7 +11,9 @@ import {
   setTaskSelected,
   displayCalBool,
   helpBool,
-  logIn
+  logIn,
+  createAccountBool,
+  userInfoReducer
 } from './reducers';
 
 const rootReducer = combineReducers({
@@ -21,7 +23,9 @@ const rootReducer = combineReducers({
   setTaskSelected,
   displayCalBool,
   helpBool,
-  logIn
+  logIn,
+  createAccountBool,
+  userInfoReducer
 })
 
 const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());

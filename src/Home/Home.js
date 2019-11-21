@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import NavBar from '../UniversalComponents/NavBar'
 import MainDisplay from '../MainDisplay/MainDisplay'
 import LogInScreen from './LogInScreen'
+import CreateAccountButton from '../CreateAccount/CreateAccountButton'
+import CreateAccount from '../CreateAccount/CreateAccount'
 import {
     logInBoolFlip
 } from '../actions'
@@ -11,7 +13,8 @@ import Button from '@material-ui/core/Button';
 const mapStateToProps = state => {
     return {
         tasks: state.editTasks.tasksVar,
-        logIn: state.logIn.logInVar
+        logIn: state.logIn.logInVar,
+        createAccountBool: state.createAccountBool.createAccountBoolVar
     }
 }
 
@@ -31,7 +34,15 @@ class Home extends Component {
                     <MainDisplay />
                 </div>
             )
-        } else {
+        } 
+        else if (this.props.createAccountBool===true){
+            return (
+                <div>
+                    <CreateAccount/>
+                </div>
+            )
+        }
+        else {
             return (
                 <div>
                     <LogInScreen />
