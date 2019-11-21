@@ -10,7 +10,9 @@ import {
     HELP_BOOL_FLIP,
     INITIAL_HELP_BOOL,
     LOGIN_BOOL_FLIP,
-    SET_NAME
+    SET_NAME,
+    CREATE_ACCOUNT_BOOL_FLIP,
+    ADD_ACCOUNT
 } from './constants';
 
 export const addNewTask = (form) => ({
@@ -71,4 +73,14 @@ export const logInBoolFlip = (bool) => ({
 export const setName = (name) => ({
     type: SET_NAME,
     payload: name
+})
+
+export const createAccountBoolFlip = (bool) => ({
+    type: CREATE_ACCOUNT_BOOL_FLIP,
+    payload: bool
+})
+
+export const addAccount = (account) => ({
+    type: ADD_ACCOUNT,
+    payload: account
 })

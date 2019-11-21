@@ -10,11 +10,30 @@ import {
     HELP_BOOL_FLIP,
     INITIAL_HELP_BOOL,
     LOGIN_BOOL_FLIP,
-    SET_NAME
+    SET_NAME,
+    CREATE_ACCOUNT_BOOL_FLIP,
+    ADD_ACCOUNT
 } from './constants';
 
 import { tasks } from './Data/tasks'
+import { userInfo } from './Data/userInfo'
 import update from 'react-addons-update';
+
+//User Data 
+const initialStateUserInfo = {
+    userInfoVar: userInfo
+}
+
+export const userInfoReducer = (state = initialStateUserInfo, action = {}) => {
+    switch (action.type) {
+        case ADD_ACCOUNT:
+            return Object.assign({},
+                state,
+                { userInfoVar: [...state.userInfoVar, action.payload] });
+        default:
+            return state;
+    }
+}
 
 //EditTasks
 const initialStateTasks = {
@@ -132,6 +151,21 @@ export const helpBool = (state = initialStateHelpBool, action = {}) => {
             return Object.assign({}, state, { initialHelpBoolVar: action.payload })
         case HELP_BOOL_FLIP:
             return Object.assign({}, state, { helpBoolVar: action.payload })
+        default:
+            return state;
+    }
+}
+
+//Create Account Bool 
+
+const initialStateCreateAccountBool = {
+    createAccountBoolVar: false
+}
+
+export const createAccountBool = (state = initialStateCreateAccountBool, action = {}) => {
+    switch (action.type) {
+        case CREATE_ACCOUNT_BOOL_FLIP:
+            return Object.assign({}, state, { createAccountBoolVar: action.payload })
         default:
             return state;
     }
