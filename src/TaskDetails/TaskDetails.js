@@ -5,6 +5,8 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
+import DoneIcon from '@material-ui/icons/Done';
+import RemoveIcon from '@material-ui/icons/Remove';
 import {
     displayTaskInfoFlip,
     addNewSubtask,
@@ -115,9 +117,9 @@ class TaskDetails extends Component {
     renderCompleteButton = () => {
         if (this.state.selectedTaskDetailRow !== '') {
             return (
-                <div>
-                    <Button size='small' onClick={() => { this.handleComplete() }}>
-                        Completed
+                <div id = 'removeSubtaskButton'>
+                    <Button size='small' startIcon = {<RemoveIcon />} variant = 'contained' color = 'primary' onClick={() => { this.handleComplete() }}>
+                        Remove Subtask
                     </Button>
                 </div>
             )
@@ -148,12 +150,15 @@ class TaskDetails extends Component {
         return (
             <div className='taskDetailsTable'>
                 <div className='taskDetailsInfo'>
-                    <h1>{this.props.tasks[this.props.selectedTask].name}</h1>
-                    <h2>Due Date: {this.props.tasks[this.props.selectedTask].date}</h2>
-                    <h2>Difficulty: {this.props.tasks[this.props.selectedTask].difficulty}</h2>
-                    <Button size='small' onClick={() => { this.handleTaskComplete() }}>
-                        Completed
-                    </Button>
+                    <div className = 'taskDetailsHeader'>
+                        <h1>{this.props.tasks[this.props.selectedTask].name}</h1>
+                        <h2>Due Date: {this.props.tasks[this.props.selectedTask].date}</h2>
+                        <h2>Difficulty: {this.props.tasks[this.props.selectedTask].difficulty}</h2>
+                        <Button id = 'buttonRight' startIcon={<DoneIcon/>} size='small' variant = 'contained' color = 'primary' onClick={() => { this.handleTaskComplete() }}>
+                            Complete Task
+                        </Button>
+                    </div>
+                    
                     <Table>
                         <TableBody>
                             {this.props.tasks[this.props.selectedTask].subtasks.map((subtask, index) => (
@@ -165,7 +170,7 @@ class TaskDetails extends Component {
                             ))}
                         </TableBody>
                     </Table>
-
+                    {this.renderCompleteButton()}
                     <div>
                         {subTaskInputs}
                     </div>
@@ -182,7 +187,7 @@ class TaskDetails extends Component {
                         Submit
                 </Button>
 
-                    {this.renderCompleteButton()}
+                    
 
                 </div>
             </div>

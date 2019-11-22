@@ -112,7 +112,7 @@ class CreateAccount extends Component {
 
   render() {
     return (
-      <div className='logInForm'>
+      <div className='createAccountForm'>
         <form className='logInInputs'>
           <h1 style={{ fontSize: '6vh' }}>CREATE ACCOUNT</h1><br />
           <label>
@@ -127,10 +127,12 @@ class CreateAccount extends Component {
             <h1>Retype Password: </h1>
             {this.resetInput(this.state.resetPassword2Bool, '', this.handleInputChange, 'password2', 'password')}
           </label><br />
-          <Button size='small' variant="outlined" onClick={() => { this.handleSubmit() }}>
+          <div className = 'logInButtons'>
+          <Button size='small' variant="contained" onClick={() => { this.handleSubmit() }}>
             Create Account
           </Button><br/>
-          <Button size='small' variant="outlined" onClick={() => {this.props.createAccountBoolFlip(false)}}>I Already Have an Account</Button>
+          <Button size='small' variant="contained"  onClick={() => {this.props.createAccountBoolFlip(false)}}>I Already Have an Account</Button>
+          </div>
         </form>
       </div>
     )

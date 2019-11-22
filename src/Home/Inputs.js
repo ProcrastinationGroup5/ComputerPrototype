@@ -91,9 +91,11 @@ class Inputs extends Component {
 
     render() {
         return (
+            <div className = 'wholeLogIn'>
+            
             <div className='logInForm'>
                 <form className='logInInputs'>
-                    <h1 style={{ fontSize: '6vh' }}>TASK MANAGER</h1><br />
+                <h1 className = 'appHeader'>TASK MANAGER</h1>
                     <label>
                         <h1>Username: </h1>
                         {this.resetInput(this.state.resetNameBool, '', this.handleInputChange, 'name', 'text')}
@@ -102,13 +104,14 @@ class Inputs extends Component {
                         <h1>Password: </h1>
                         {this.resetInput(this.state.resetPasswordBool, '', this.handleInputChange, 'password', 'password')}
                     </label><br />
-                    <Button size='small' variant="outlined" onClick={() => { this.handleSubmit() }}>
+                    <Button size='small' variant="contained" onClick={() => { this.handleSubmit() }}>
                         Log In
                         </Button><br />
-                    <Button size='small' variant="outlined" onClick={() => { this.props.createAccountBoolFlip(true) }}>
+                    <Button size='small' variant="contained" onClick={() => { this.props.createAccountBoolFlip(true) }}>
                         Create Account
                     </Button>
                 </form>
+            </div>
             </div>
         )
     }
