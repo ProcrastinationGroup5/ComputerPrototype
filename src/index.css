@@ -212,6 +212,10 @@ code {
   font-size: 7vh
 }
 
+.noTasksHint {
+  font-size: 2vh
+}
+
 .helpParentDiv {
   text-align: center;
   margin-top:10%
@@ -251,8 +255,6 @@ code {
   align-items: center;
   height: 50%;
 }
-
-
 
 .wholeLogIn{
   background-color: white;

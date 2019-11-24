@@ -81,41 +81,69 @@ class AddTask extends Component {
 
     handleSubmit = () => {
 
-        if (this.state.formControls.difficulty.value == 'intro' || this.state.formControls.difficulty.value == '') {
-            window.alert('Please select difficulty')
-        }
-
-        if (!(isValidDate(this.state.formControls.date.value))) {
-            window.alert('Please input a valid date')
+        if (this.state.formControls.name.value == '') {
+            window.alert('Please input a valid task name')
         }
 
         else {
-            this.setState({
-                formControls: {
-                    name: {
-                        value: ''
-                    },
-                    date: {
-                        value: ''
-                    },
-                    difficulty: {
-                        value: ''
+            if (this.state.formControls.difficulty.value == 'intro' || this.state.formControls.difficulty.value == '') {
+                window.alert('Please select difficulty')
+            }
+
+            else {
+
+                if (!(isValidDate(this.state.formControls.date.value))) {
+                    window.alert('Please input a valid date')
+                }
+
+                else {
+
+                    let duplicateSubtasks = false;
+
+                    var sorted_subtasks = this.state.subtasks.slice().sort();
+                    for (var i = 0; i < sorted_subtasks.length - 1; i++) {
+                        if (sorted_subtasks[i + 1] == sorted_subtasks[i]) {
+                            duplicateSubtasks=true;
+                        }
                     }
-                },
-                numberSubtasks: 0
-            })
 
-            this.props.addNewTask({
-                name: this.state.formControls.name.value,
-                date: this.state.formControls.date.value,
-                difficulty: this.state.formControls.difficulty.value,
-                subtasks: this.state.subtasks,
-                numberSubtasks: this.state.numberSubtasks,
-                user: this.props.name
-            })
+                    if (duplicateSubtasks == true) {
+                        window.alert('Please do not input duplicate subtasks.')
+                    }
 
-            this.props.displayANTBoolFlip(false)
+                    else {
 
+                        window.alert('You just added '+this.state.formControls.name.value+' to your tasks.')
+
+                        this.setState({
+                            formControls: {
+                                name: {
+                                    value: ''
+                                },
+                                date: {
+                                    value: ''
+                                },
+                                difficulty: {
+                                    value: ''
+                                }
+                            },
+                            numberSubtasks: 0
+                        })
+
+                        this.props.addNewTask({
+                            name: this.state.formControls.name.value,
+                            date: this.state.formControls.date.value,
+                            difficulty: this.state.formControls.difficulty.value,
+                            subtasks: this.state.subtasks,
+                            numberSubtasks: this.state.numberSubtasks,
+                            user: this.props.name
+                        })
+
+                        this.props.displayANTBoolFlip(false)
+
+                    }
+                }
+            }
         }
     }
 
@@ -130,9 +158,8 @@ class AddTask extends Component {
         }
 
         return (
-            <form className = 'taskForm'>
-                <div id = 'left'>
-                {/* <div className='taskFormInput'> */}
+            <form className='taskForm'>
+                <div id='left'>
                     <label className='addTaskInputNameLabel'>Task Name:</label><br />
                     <input type="text"
                         name="name"
@@ -140,60 +167,59 @@ class AddTask extends Component {
                         value={this.state.formControls.name.value}
                         onChange={this.changeHandler}
                     />
-                {/* </div> */}
 
-                <div>
-                    {subTaskInputs}
-                </div>
+                    <div>
+                        {subTaskInputs}
+                    </div>
 
-                <div className='taskFormActionButtons'>
-                    <Button variant = 'contained' startIcon={<AddIcon />} color = 'primary' size='small' onClick={() => {
-                        this.setState({
-                            numberSubtasks: this.state.numberSubtasks + 1
-                        })
-                    }}>
-                        Add SubTask
+                    <div className='taskFormActionButtons'>
+                        <Button variant='contained' startIcon={<AddIcon />} color='primary' size='small' onClick={() => {
+                            this.setState({
+                                numberSubtasks: this.state.numberSubtasks + 1
+                            })
+                        }}>
+                            Add SubTask
                 </Button>
-                </div>
+                    </div>
 
                 </div>
-                
-                <div id = 'right'>
-                <div className='taskFormInput' id = 'datedifblock'>
-                    <label className='addTaskInputDateLabel'>Due Date:</label><br />
-                    <input type="date"
-                        name="date"
-                        className='addTaskInputDate'
-                        value={this.state.formControls.date.value}
-                        onChange={this.changeHandler}
-                    />
-                </div>
 
-                <div className='taskFormInput' id = 'datedifblock'>
-                    <label className='addTaskInputDifficultyLabel'>Difficulty</label><br />
-                    <select name="difficulty"
-                        value={this.state.formControls.difficulty.value}
-                        className='addTaskInputDifficulty'
-                        onChange={this.changeHandler}>
-                        <option value='intro'>Select Difficulty:</option>
-                        <option value="Easy">Easy</option>
-                        <option value="Medium">Medium</option>
-                        <option value="Difficult">Difficult</option>
-                    </select>
-                </div>
+                <div id='right'>
+                    <div className='taskFormInput' id='datedifblock'>
+                        <label className='addTaskInputDateLabel'>Due Date:</label><br />
+                        <input type="date"
+                            name="date"
+                            className='addTaskInputDate'
+                            value={this.state.formControls.date.value}
+                            onChange={this.changeHandler}
+                        />
+                    </div>
 
-                <div className='taskFormActionButtonsSubmit'  id = 'datedifblock'>
-                <Button variant = 'contained' color = 'primary' size='large' onClick={() => {
-                        this.handleSubmit()
-                    }}>
-                        Submit
+                    <div className='taskFormInput' id='datedifblock'>
+                        <label className='addTaskInputDifficultyLabel'>Difficulty</label><br />
+                        <select name="difficulty"
+                            value={this.state.formControls.difficulty.value}
+                            className='addTaskInputDifficulty'
+                            onChange={this.changeHandler}>
+                            <option value='intro'>Select Difficulty:</option>
+                            <option value="Easy">Easy</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Difficult">Difficult</option>
+                        </select>
+                    </div>
+
+                    <div className='taskFormActionButtonsSubmit' id='datedifblock'>
+                        <Button variant='contained' color='primary' size='large' onClick={() => {
+                            this.handleSubmit()
+                        }}>
+                            Submit
                 </Button>
-                </div>
+                    </div>
 
 
                 </div>
 
-                
+
 
             </form>
         );
