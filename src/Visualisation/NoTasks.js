@@ -21,6 +21,7 @@ class NoTasks extends Component {
         return (
             <div className='noTasks'>
                 You have no tasks to complete!
+                <p className='noTasksHint'>(Hint: Click the "Add Tasks" button at the top of the screen to add some)</p>
             </div>
         )
     }

@@ -71,7 +71,7 @@ class Visualisation extends Component {
                 tasksList.push(
                     <div style={{ marginLeft: leftMargin }}>
                         <Button className='taskNameButton' onClick={() => { this.taskNameClicked(i) }}>{this.props.tasks[i].name}</Button><br />
-                        <Circle r={this.props.tasks[i].numberSubtasks * 60} fill={{ color: this.circleColor(i) }} /> <br />
+                        <Circle r={(this.props.tasks[i].numberSubtasks+1) * 60} fill={{ color: this.circleColor(i) }} /> <br />
                     </div>
                 )
             }
