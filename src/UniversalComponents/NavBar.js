@@ -29,12 +29,6 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-const style = {
-
-    background : '#2E3B55'
-};
-
-
 class NavBar extends Component {
     constructor(props) {
         super(props);

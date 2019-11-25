@@ -49,7 +49,7 @@ function dueDateColor(dateString) {
     if (todaysDate() > dateString) {
         return "secondary";
     }
-    else if (todaysDate() == dateString){
+    else if (todaysDate() === dateString){
         return "primary"
     }
     else {
@@ -67,10 +67,10 @@ class Visualisation extends Component {
     }
 
     circleColor = (i) => {
-        if (this.props.tasks[i].difficulty == 'Easy') {
+        if (this.props.tasks[i].difficulty === 'Easy') {
             return '#fca503'
         }
-        else if (this.props.tasks[i].difficulty == 'Medium') {
+        else if (this.props.tasks[i].difficulty === 'Medium') {
             return '#2409ba'
         }
         else {
