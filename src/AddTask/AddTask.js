@@ -109,12 +109,12 @@ class AddTask extends Component {
 
     handleSubmit = () => {
 
-        if (this.state.formControls.name.value == '') {
+        if (this.state.formControls.name.value === '') {
             window.alert('Please input a valid task name')
         }
 
         else {
-            if (this.state.formControls.difficulty.value == 'intro' || this.state.formControls.difficulty.value == '') {
+            if (this.state.formControls.difficulty.value === 'intro' || this.state.formControls.difficulty.value === '') {
                 window.alert('Please select difficulty')
             }
 
@@ -136,12 +136,12 @@ class AddTask extends Component {
 
                         var sorted_subtasks = this.state.subtasks.slice().sort();
                         for (var i = 0; i < sorted_subtasks.length - 1; i++) {
-                            if (sorted_subtasks[i + 1] == sorted_subtasks[i]) {
+                            if (sorted_subtasks[i + 1] === sorted_subtasks[i]) {
                                 duplicateSubtasks = true;
                             }
                         }
 
-                        if (duplicateSubtasks == true) {
+                        if (duplicateSubtasks === true) {
                             window.alert('Please do not input duplicate subtasks.')
                         }
 

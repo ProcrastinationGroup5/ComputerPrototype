@@ -60,7 +60,7 @@ function dueDateColor(dateString) {
     if (todaysDate() > dateString) {
         return "#FF0000";
     }
-    else if (todaysDate() == dateString){
+    else if (todaysDate() === dateString){
         return "#OOOOFF"
     }
     else {

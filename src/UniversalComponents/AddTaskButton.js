@@ -1,9 +1,4 @@
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
 import Button from '@material-ui/core/Button';
-import { withStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
-import AddTask from '../AddTask/AddTask'
 import React, { Component } from "react";
 import { connect } from 'react-redux'
 import '../index.css'

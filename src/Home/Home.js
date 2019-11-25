@@ -3,12 +3,10 @@ import { connect } from 'react-redux';
 import NavBar from '../UniversalComponents/NavBar'
 import MainDisplay from '../MainDisplay/MainDisplay'
 import LogInScreen from './LogInScreen'
-import CreateAccountButton from '../CreateAccount/CreateAccountButton'
 import CreateAccount from '../CreateAccount/CreateAccount'
 import {
     logInBoolFlip
 } from '../actions'
-import Button from '@material-ui/core/Button';
 
 const mapStateToProps = state => {
     return {
