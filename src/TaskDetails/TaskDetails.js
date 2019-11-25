@@ -38,6 +38,36 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
+function todaysDate() {
+    var today = new Date();
+    var dd = today.getDate().toString();
+
+    var mm1 = today.getMonth() + 1;
+    var mm = mm1.toString();
+    var yyyy = today.getFullYear().toString();
+    if (dd < 10) {
+        dd = '0' + dd;
+    }
+
+    if (mm < 10) {
+        mm = '0' + mm;
+    }
+
+    return (yyyy + '-' + mm + '-' + dd)
+}
+
+function dueDateColor(dateString) {
+    if (todaysDate() > dateString) {
+        return "#FF0000";
+    }
+    else if (todaysDate() == dateString){
+        return "#OOOOFF"
+    }
+    else {
+        return "#000000";
+    }
+}
+
 class TaskDetails extends Component {
 
     constructor() {
@@ -161,7 +191,7 @@ class TaskDetails extends Component {
                 <div className='taskDetailsInfo'>
                     <div className='taskDetailsHeader'>
                         <h1>{this.props.tasks[this.props.selectedTask].name}</h1>
-                        <h2>Due Date: {this.props.tasks[this.props.selectedTask].date}</h2>
+                        <h2 style = {{color: dueDateColor(this.props.tasks[this.props.selectedTask].date)}}>Due Date: {this.props.tasks[this.props.selectedTask].date}</h2>
                         <h2>Difficulty: {this.props.tasks[this.props.selectedTask].difficulty}</h2>
                         <Button id='buttonRight' startIcon={<DoneIcon />} size='small' variant='contained' color='primary' onClick={() => { this.handleTaskComplete() }}>
                             Complete Task
