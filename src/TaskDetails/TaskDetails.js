@@ -118,9 +118,19 @@ class TaskDetails extends Component {
     renderCompleteButton = () => {
         if (this.state.selectedTaskDetailRow !== '') {
             return (
-                    <Button size='small' startIcon = {<RemoveIcon />} id = 'removeSubtaskButton' variant = 'contained' color = 'primary' onClick={() => { this.handleComplete() }}>
-                        Remove Subtask
+                <Button size='small' startIcon={<RemoveIcon />} id='removeSubtaskButton' variant='contained' color='primary' onClick={() => { this.handleComplete() }}>
+                    Remove Subtask
                     </Button>
+            )
+        }
+    }
+
+    renderSubmitButton = () => {
+        if (this.state.additionalSubtaskButtonPressed) {
+            return (
+                <Button size='small' variant='contained' color='primary' onClick={() => { this.handleSubmit() }}>
+                    Submit
+                </Button>
             )
         }
     }
@@ -149,11 +159,11 @@ class TaskDetails extends Component {
         return (
             <div className='taskDetailsTable'>
                 <div className='taskDetailsInfo'>
-                    <div className = 'taskDetailsHeader'>
+                    <div className='taskDetailsHeader'>
                         <h1>{this.props.tasks[this.props.selectedTask].name}</h1>
                         <h2>Due Date: {this.props.tasks[this.props.selectedTask].date}</h2>
                         <h2>Difficulty: {this.props.tasks[this.props.selectedTask].difficulty}</h2>
-                        <Button id = 'buttonRight' startIcon={<DoneIcon/>} size='small' variant = 'contained' color = 'primary' onClick={() => { this.handleTaskComplete() }}>
+                        <Button id='buttonRight' startIcon={<DoneIcon />} size='small' variant='contained' color='primary' onClick={() => { this.handleTaskComplete() }}>
                             Complete Task
                         </Button>
                     </div>
@@ -168,11 +178,11 @@ class TaskDetails extends Component {
                             ))}
                         </TableBody>
                     </Table>
-                    
+
                     <div>
                         {subTaskInputs}
                     </div>
-                    <Button size='small' variant = 'contained' color='primary' id = 'bottomButtons' startIcon={<AddIcon/>} onClick={() => {
+                    <Button size='small' variant='contained' color='primary' id='bottomButtons' startIcon={<AddIcon />} onClick={() => {
                         this.setState({
                             numberAdditionalSubtasks: this.state.numberAdditionalSubtasks + 1,
                             additionalSubtaskButtonPressed: true
@@ -180,12 +190,8 @@ class TaskDetails extends Component {
                     }}>
                         Add SubTask
                     </Button>
-                    <Button size='small' variant='contained' color='primary' onClick={() => { this.handleSubmit() }}>
-                        Submit
-                    </Button>
+                    {this.renderSubmitButton()}
                     {this.renderCompleteButton()}
-                    
-
                 </div>
             </div>
 
