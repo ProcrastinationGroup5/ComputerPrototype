@@ -64,9 +64,11 @@ class Help extends Component {
                        click "Add Subtask" and add as many sub tasks as you have. Once you are done, hit "Submit!"</p>
                     <p>To access a calendar view of all your events, simply click "View Calendar", also located at the top of your screen.</p>
                     <p>If you click "YOUR TASKS", you will see circles of various sizes. Each circle represents one of your tasks. The bigger the circle, the bigger your task.
-                    Above each circle is the name of each of your tasks. Click on them to access more details for each one. There, if you click on a sub task, you will see a "Complete" button at the bottom
+                    Above each circle is the name of each of your tasks. If the text is in red, that indicates that it is overdue; if it is in blue, it is due today; and if it is in black, it is not currently due.
+                    Click on them to access more details for each one. There, if you click on a sub task, you will see a "Complete" button at the bottom
                     of the screen. Click that button to mark that you have completed a sub task and the size of your circle will reduce. If you have completed your overall task, click the "Completed" button located
-                    right below the due date, and the task will be removed.</p>
+                    right below the due date, and the task will be removed. A red due dates indicates that your task is overdue, a blue one indicates that it is due today, and finally, a black one indicates it is not currently due.</p>
+                    <p>A red circle indicates a difficult task, yellow indicates medium difficulty, and blue indicates easy.</p>
                     <p>To access this page again, click the "Help" button at the top of your screen</p>
                     <p>Good luck with your work!</p>
                     <p>Developed by Vishal, Efe, Sid, and David</p>

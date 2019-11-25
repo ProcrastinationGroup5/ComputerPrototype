@@ -27,6 +27,36 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
+function todaysDate() {
+    var today = new Date();
+    var dd = today.getDate().toString();
+
+    var mm1 = today.getMonth() + 1;
+    var mm = mm1.toString();
+    var yyyy = today.getFullYear().toString();
+    if (dd < 10) {
+        dd = '0' + dd;
+    }
+
+    if (mm < 10) {
+        mm = '0' + mm;
+    }
+
+    return (yyyy + '-' + mm + '-' + dd)
+}
+
+function dueDateColor(dateString) {
+    if (todaysDate() > dateString) {
+        return "secondary";
+    }
+    else if (todaysDate() == dateString){
+        return "primary"
+    }
+    else {
+        return "default";
+    }
+}
+
 class Visualisation extends Component {
 
     taskNameClicked = (i) => {
@@ -70,8 +100,8 @@ class Visualisation extends Component {
                 let leftMargin = getRandomArbitrary(20, 50) + '%'
                 tasksList.push(
                     <div style={{ marginLeft: leftMargin, textAlign: "center"}}>
-                        <Button className='taskNameButton' onClick={() => { this.taskNameClicked(i) }}>{this.props.tasks[i].name}</Button><br />
-                        <Circle r={(this.props.tasks[i].numberSubtasks+1) * 60} fill={{ color: this.circleColor(i) }} /> <br />
+                        <Button variant = 'outlined' color = {dueDateColor(this.props.tasks[i].date)} className='taskNameButton' onClick={() => { this.taskNameClicked(i) }}>{this.props.tasks[i].name}</Button><br />
+                        <Circle r={(this.props.tasks[i].numberSubtasks+1) * 60} fill={{ color: this.circleColor(i) }} /> <br /><br />
                     </div>
                 )
             }

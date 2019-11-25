@@ -17,9 +17,9 @@ import {
 } from '../actions'
 
 const mapStateToProps = state => {
-    return {
-      displayANTBool: state.displayANTBool.displayANTBoolVar,
-    }
+  return {
+    displayANTBool: state.displayANTBool.displayANTBoolVar,
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -34,13 +34,14 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 class logOut extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-        };
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+    };
+  }
 
-    toggleLogOut = () => {
+  toggleLogOut = () => {
+    if (window.confirm('Are you sure you want to log out?')) {
       this.props.displayTaskInfoFlip(false)
       this.props.displayCalBoolFlip(false)
       this.props.helpBoolFlip(false)
@@ -48,13 +49,14 @@ class logOut extends Component {
       this.props.logInBoolFlip(false)
       this.props.setName('')
     }
-    render() {
-        return (
-            <div className="App">
-                <Button className='AddTaskButton' onClick={() => {this.toggleLogOut()}}>Log Out</Button>
-            </div>
-        );
-    }
+  }
+  render() {
+    return (
+      <div className="App">
+        <Button className='AddTaskButton' onClick={() => { this.toggleLogOut() }}>Log Out</Button>
+      </div>
+    );
+  }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(logOut)
+export default connect(mapStateToProps, mapDispatchToProps)(logOut)

@@ -30,6 +30,34 @@ function isValidDate(dateString) {
     return d.toISOString().slice(0, 10) === dateString;
 }
 
+
+function todaysDate() {
+    var today = new Date();
+    var dd = today.getDate().toString();
+
+    var mm1 = today.getMonth() + 1;
+    var mm = mm1.toString();
+    var yyyy = today.getFullYear().toString();
+    if (dd < 10) {
+        dd = '0' + dd;
+    }
+
+    if (mm < 10) {
+        mm = '0' + mm;
+    }
+
+    return (yyyy + '-' + mm + '-' + dd)
+}
+
+function isOverdue(dateString) {
+    if (todaysDate() > dateString) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
 class AddTask extends Component {
 
     constructor() {
@@ -98,49 +126,56 @@ class AddTask extends Component {
 
                 else {
 
-                    let duplicateSubtasks = false;
-
-                    var sorted_subtasks = this.state.subtasks.slice().sort();
-                    for (var i = 0; i < sorted_subtasks.length - 1; i++) {
-                        if (sorted_subtasks[i + 1] == sorted_subtasks[i]) {
-                            duplicateSubtasks=true;
-                        }
-                    }
-
-                    if (duplicateSubtasks == true) {
-                        window.alert('Please do not input duplicate subtasks.')
+                    if (isOverdue(this.state.formControls.date.value)) {
+                        window.alert('Please input a due date today or later')
                     }
 
                     else {
 
-                        window.alert('You just added '+this.state.formControls.name.value+' to your tasks.')
+                        let duplicateSubtasks = false;
 
-                        this.setState({
-                            formControls: {
-                                name: {
-                                    value: ''
+                        var sorted_subtasks = this.state.subtasks.slice().sort();
+                        for (var i = 0; i < sorted_subtasks.length - 1; i++) {
+                            if (sorted_subtasks[i + 1] == sorted_subtasks[i]) {
+                                duplicateSubtasks = true;
+                            }
+                        }
+
+                        if (duplicateSubtasks == true) {
+                            window.alert('Please do not input duplicate subtasks.')
+                        }
+
+                        else {
+
+                            window.alert('You just added ' + this.state.formControls.name.value + ' to your tasks.')
+
+                            this.setState({
+                                formControls: {
+                                    name: {
+                                        value: ''
+                                    },
+                                    date: {
+                                        value: ''
+                                    },
+                                    difficulty: {
+                                        value: ''
+                                    }
                                 },
-                                date: {
-                                    value: ''
-                                },
-                                difficulty: {
-                                    value: ''
-                                }
-                            },
-                            numberSubtasks: 0
-                        })
+                                numberSubtasks: 0
+                            })
 
-                        this.props.addNewTask({
-                            name: this.state.formControls.name.value,
-                            date: this.state.formControls.date.value,
-                            difficulty: this.state.formControls.difficulty.value,
-                            subtasks: this.state.subtasks,
-                            numberSubtasks: this.state.numberSubtasks,
-                            user: this.props.name
-                        })
+                            this.props.addNewTask({
+                                name: this.state.formControls.name.value,
+                                date: this.state.formControls.date.value,
+                                difficulty: this.state.formControls.difficulty.value,
+                                subtasks: this.state.subtasks,
+                                numberSubtasks: this.state.numberSubtasks,
+                                user: this.props.name
+                            })
 
-                        this.props.displayANTBoolFlip(false)
+                            this.props.displayANTBoolFlip(false)
 
+                        }
                     }
                 }
             }
@@ -213,7 +248,7 @@ class AddTask extends Component {
                             this.handleSubmit()
                         }}>
                             Submit
-                </Button>
+                        </Button>
                     </div>
 
 
