@@ -45,7 +45,7 @@ class Help extends Component {
     toggleHelpInitial = () => {
         if (this.props.initialHelpBool === true) {
             return (
-                <Button className='AddTaskButton' onClick={() => { this.onLetsBegin() }}>Let's Begin!</Button>
+                <Button variant = 'contained' color='primary' className='AddTaskButton' onClick={() => { this.onLetsBegin() }}>Let's Begin!</Button>
             )
         }
         else {

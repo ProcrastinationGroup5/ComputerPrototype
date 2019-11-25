@@ -18,7 +18,7 @@ code {
 
 #removeSubtaskButton
 {
-  margin-bottom:5px;
+  margin-left: 10px;
 }
 
 #buttonRight{
@@ -146,8 +146,8 @@ code {
 
 .addInputSubtaskTaskDetails {
   position:relative;
-  width:50%;
-  font-size:2.5vw;
+  width:100%;
+  font-size:0.875rem;
 }
 
 .AddTaskButton {
@@ -201,6 +201,11 @@ code {
   margin-top: 50px;
 }
 
+#bottomButtons
+{
+  margin-right:10px;
+}
+
 .taskVisual {
   margin-left:50%;
   text-align: center;
@@ -218,7 +223,7 @@ code {
 
 .helpParentDiv {
   text-align: center;
-  margin-top:10%
+  margin-top:5%
 }
 
 .helpContentDiv {
