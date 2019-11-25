@@ -7,6 +7,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
 import DoneIcon from '@material-ui/icons/Done';
 import RemoveIcon from '@material-ui/icons/Remove';
+import AddIcon from '@material-ui/icons/Add';
 import {
     displayTaskInfoFlip,
     addNewSubtask,
@@ -117,11 +118,9 @@ class TaskDetails extends Component {
     renderCompleteButton = () => {
         if (this.state.selectedTaskDetailRow !== '') {
             return (
-                <div id = 'removeSubtaskButton'>
-                    <Button size='small' startIcon = {<RemoveIcon />} variant = 'contained' color = 'primary' onClick={() => { this.handleComplete() }}>
+                    <Button size='small' startIcon = {<RemoveIcon />} id = 'removeSubtaskButton' variant = 'contained' color = 'primary' onClick={() => { this.handleComplete() }}>
                         Remove Subtask
                     </Button>
-                </div>
             )
         }
     }
@@ -158,7 +157,6 @@ class TaskDetails extends Component {
                             Complete Task
                         </Button>
                     </div>
-                    
                     <Table>
                         <TableBody>
                             {this.props.tasks[this.props.selectedTask].subtasks.map((subtask, index) => (
@@ -170,23 +168,22 @@ class TaskDetails extends Component {
                             ))}
                         </TableBody>
                     </Table>
-                    {this.renderCompleteButton()}
+                    
                     <div>
                         {subTaskInputs}
                     </div>
-                    <Button size='small' onClick={() => {
+                    <Button size='small' variant = 'contained' color='primary' id = 'bottomButtons' startIcon={<AddIcon/>} onClick={() => {
                         this.setState({
                             numberAdditionalSubtasks: this.state.numberAdditionalSubtasks + 1,
                             additionalSubtaskButtonPressed: true
                         })
                     }}>
                         Add SubTask
-                </Button>
-
-                    <Button size='small' onClick={() => { this.handleSubmit() }}>
+                    </Button>
+                    <Button size='small' variant='contained' color='primary' onClick={() => { this.handleSubmit() }}>
                         Submit
-                </Button>
-
+                    </Button>
+                    {this.renderCompleteButton()}
                     
 
                 </div>
