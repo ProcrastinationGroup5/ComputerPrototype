@@ -99,9 +99,9 @@ class Visualisation extends Component {
             if (this.props.tasks[i].user === this.props.name) {
                 let leftMargin = getRandomArbitrary(20, 50) + '%'
                 tasksList.push(
-                    <div style={{ marginLeft: leftMargin, textAlign: "center"}}>
+                    <div style={{ marginLeft: leftMargin, textAlign: "center", marginTop: '15px'}}>
                         <Button variant = 'outlined' color = {dueDateColor(this.props.tasks[i].date)} className='taskNameButton' onClick={() => { this.taskNameClicked(i) }}>{this.props.tasks[i].name}</Button><br />
-                        <Circle r={(this.props.tasks[i].numberSubtasks+1) * 60} fill={{ color: this.circleColor(i) }} /> <br /><br />
+                        <Circle r={(this.props.tasks[i].numberSubtasks+1) * 60} fill={{ color: this.circleColor(i) }} /> <br />
                     </div>
                 )
             }
