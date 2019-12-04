@@ -10,7 +10,9 @@ import {
 
 const mapStateToProps = state => {
     return {
-        name: state.logIn.nameVar
+        name: state.logIn.nameVar,
+        tasks: state.editTasks.tasksVar,
+        tasksLength: state.editTasks.tasksLength,
     }
 }
 
@@ -132,49 +134,64 @@ class AddTask extends Component {
 
                     else {
 
-                        let duplicateSubtasks = false;
+                        let duplicateTasks = false;
 
-                        var sorted_subtasks = this.state.subtasks.slice().sort();
-                        for (var i = 0; i < sorted_subtasks.length - 1; i++) {
-                            if (sorted_subtasks[i + 1] === sorted_subtasks[i]) {
-                                duplicateSubtasks = true;
+                        for (var i = 0; i < this.props.tasksLength; i++) {
+                            if (this.state.formControls.name.value === this.props.tasks[i].name) {
+                                duplicateTasks = true
+                                break;
                             }
                         }
 
-                        if (duplicateSubtasks === true) {
-                            window.alert('Please do not input duplicate subtasks.')
+                        if (duplicateTasks === true) {
+                            window.alert('Please do not input a duplicate task')
                         }
 
                         else {
 
-                            window.alert('You just added ' + this.state.formControls.name.value + ' to your tasks.')
+                            let duplicateSubtasks = false;
 
-                            this.setState({
-                                formControls: {
-                                    name: {
-                                        value: ''
+                            var sorted_subtasks = this.state.subtasks.slice().sort();
+                            for (var i = 0; i < sorted_subtasks.length - 1; i++) {
+                                if (sorted_subtasks[i + 1] === sorted_subtasks[i]) {
+                                    duplicateSubtasks = true;
+                                }
+                            }
+
+                            if (duplicateSubtasks === true) {
+                                window.alert('Please do not input duplicate subtasks.')
+                            }
+
+                            else {
+
+                                window.alert('You just added ' + this.state.formControls.name.value + ' to your tasks.')
+
+                                this.setState({
+                                    formControls: {
+                                        name: {
+                                            value: ''
+                                        },
+                                        date: {
+                                            value: ''
+                                        },
+                                        difficulty: {
+                                            value: ''
+                                        }
                                     },
-                                    date: {
-                                        value: ''
-                                    },
-                                    difficulty: {
-                                        value: ''
-                                    }
-                                },
-                                numberSubtasks: 0
-                            })
+                                    numberSubtasks: 0
+                                })
 
-                            this.props.addNewTask({
-                                name: this.state.formControls.name.value,
-                                date: this.state.formControls.date.value,
-                                difficulty: this.state.formControls.difficulty.value,
-                                subtasks: this.state.subtasks,
-                                numberSubtasks: this.state.numberSubtasks,
-                                user: this.props.name
-                            })
+                                this.props.addNewTask({
+                                    name: this.state.formControls.name.value,
+                                    date: this.state.formControls.date.value,
+                                    difficulty: this.state.formControls.difficulty.value,
+                                    subtasks: this.state.subtasks,
+                                    numberSubtasks: this.state.numberSubtasks,
+                                    user: this.props.name
+                                })
 
-                            this.props.displayANTBoolFlip(false)
-
+                                this.props.displayANTBoolFlip(false)
+                            }
                         }
                     }
                 }
